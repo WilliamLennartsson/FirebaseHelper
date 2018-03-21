@@ -16,11 +16,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        loadQuestions()
-        
         
         //let question2 = Question(title: "kakan går ofta till gymmet", correctAnswer: false)
-        
         
 //        myDatabase.child(lobbyString).childByAutoId().setValue(userEmail)
 //
@@ -40,6 +37,7 @@ class ViewController: UIViewController {
     }
     
     func loadQuestions(){
+        //Not done
         let myDatabase = Database.database().reference()
         let question : String = myDatabase.child("Questions").description()
         
