@@ -19,9 +19,14 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var addBranchBtn: UIButton!
     @IBOutlet weak var pushItemBtn: UIButton!
+    @IBOutlet weak var clearPathBtn: UIButton!
     
     let userEmail : String = "Hek@gmail.com"
     let lobbyString : String = "Lobby"
+    
+    let fbHelper = FirebaseHelper()
+    var searchPathArray : [String] = []
+    
     override func viewWillAppear(_ animated: Bool) {
         
 
@@ -29,24 +34,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let path : [String] = ["ekkkk", "tre", "fem", "dad", "dokaodka", "odkaokda", "okdaokdoad", "odka"]
-        let item : (key: String, value: String) = ("säkondKey", "Välju2")
-        //fb.getStringWithPath(path)
-        //fb.pushKeyValueWithPath(searchPath: path, item: ((key: "ntjoohoo", value: "Hajjeell")))
-    
-        //fb.pushItem(path, item: item)
-        
-        
-        //let question2 = Question(title: "kakan går ofta till gymmet", correctAnswer: false)
-        
-//        myDatabase.child(lobbyString).childByAutoId().setValue(userEmail)
-//
-//        Auth.auth().createUser(withEmail: "1@gmail.com", password: "123123") { (user, error) in
-//            print(user?.displayName)
-//        }
     }
     
-    var searchPathArray : [String] = []
+    
     
     @IBAction func addBranchBtnPressed(_ sender: Any) {
         if let labelText = firebaseTextfield?.text! {
@@ -60,8 +50,19 @@ class ViewController: UIViewController {
             firebaseTextfield.text = ""
         }
     }
-    @IBOutlet weak var pushBtnPressed: UIButton!
     
+    @IBAction func pushBtnPressed(_ sender: Any) {
+        if let keyString = keyTextfield?.text! {
+            if let valueString = valueTextfield?.text! {
+                fbHelper.pushKeyValueWithPath(searchPath: searchPathArray, item: (key: keyString, value: valueString))
+            }
+        }
+    }
+    
+    @IBAction func clearPathBtnPressed(_ sender: Any) {
+        searchPathArray = []
+        firebaseLabel.text = ""
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
