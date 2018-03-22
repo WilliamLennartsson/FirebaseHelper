@@ -25,11 +25,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x2w-8Z-REO">
+                                <rect key="frame" x="104" y="254" width="166" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Firebase"/>
+                                <connections>
+                                    <action selector="firebaseBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5n1-tx-1yG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="firebaseBtn" destination="x2w-8Z-REO" id="w5p-CG-nVN"/>
                         <outlet property="firebaseLabel" destination="MZU-nM-axx" id="3Uf-0c-uQT"/>
                     </connections>
                 </viewController>

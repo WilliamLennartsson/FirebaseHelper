@@ -11,9 +11,11 @@ import Firebase
 
 class ViewController: UIViewController {
     @IBOutlet weak var firebaseLabel: UILabel!
+    @IBOutlet weak var firebaseBtn: UIButton!
     
     let userEmail : String = "Hek@gmail.com"
     let lobbyString : String = "Lobby"
+    let fb = FirebaseHelper()
     override func viewWillAppear(_ animated: Bool) {
         
 
@@ -23,16 +25,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         let path : [String] = ["ekkkk", "tre", "fem", "dad", "dokaodka", "odkaokda", "okdaokdoad", "odka"]
         let item : (key: String, value: String) = ("säkondKey", "Välju2")
-        let fb = FirebaseHelper()
         fb.getStringWithPath(path)
         //fb.pushKeyValueWithPath(searchPath: path, item: ((key: "ntjoohoo", value: "Hajjeell")))
-        
-        
-        
-        
-        
-        
-        
+    
         //fb.pushItem(path, item: item)
         
         
@@ -45,7 +40,12 @@ class ViewController: UIViewController {
 //        }
     }
     
-
+    @IBAction func firebaseBtnPressed(_ sender: Any) {
+        let a = fb.keyValuePair
+        firebaseLabel.text = a["Key"]
+        print(a)
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

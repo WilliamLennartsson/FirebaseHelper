@@ -8,22 +8,13 @@
 
 import UIKit
 import Firebase
-class FirebaseHelper: NSObject {
+class FirebaseHelper {
     
-    // Takes a searchpath of strings. The path can be empty
-    // The item added needs a key and a value in order to work
-    // Max index = 4
-//    func pushKeyValueItem(_ searchPath: [String], item: (key: String, value: String)){
-//        let myDatabase = Database.database().reference()
-//        switch searchPath.count {
-//        case 0: myDatabase.child(item.key).setValue(item.value)
-//        case 1: myDatabase.child(searchPath[0]).child(item.key).setValue(item.value)
-//        case 2: myDatabase.child(searchPath[0]).child(searchPath[1]).child(item.key).setValue(item.value)
-//        case 3: myDatabase.child(searchPath[0]).child(searchPath[1]).child(searchPath[2]).child(item.key).setValue(item.value)
-//        case 4: myDatabase.child(searchPath[0]).child(searchPath[1]).child(searchPath[2]).child(searchPath[3]).child(item.key).setValue(item.value)
-//        default: return
-//        }
-//    }
+    var keyValuePair : [String : String] = ["Key":"", "Value":""]
+    
+    func setEventListenerForObject (){
+        
+    }
     
     
     //Push array of strings to chosen path
@@ -41,6 +32,7 @@ class FirebaseHelper: NSObject {
         }
     }
     
+    
     // Push a tuple containing two string values to chosen path
     func pushKeyValueWithPath (searchPath : [String], item : (key: String, value: String)){
         var stringSearchPath : String? = ""
@@ -56,14 +48,14 @@ class FirebaseHelper: NSObject {
         }
     }
     
-    
-
-    var keyValuePair : [String : String] = ["Key":"", "Value":""]
+    //NOTE: Only loads the global value with information. Doesnt return anything
+    //Return / Sets value of object at given indexpath
     func getStringWithPath (_ searchPath : [String]){
         var stringSearchPath : String? = ""
         for keyWord in searchPath {
             stringSearchPath?.append("\(keyWord)/")
         }
+        
         if let stringPath = stringSearchPath {
             //Successful Searchpath
             let myDatabase = Database.database().reference(withPath: stringPath)
@@ -88,8 +80,40 @@ class FirebaseHelper: NSObject {
             print(b)
         }
     }
-    
 }
+
+
+
+
+//    struct KeyValueItem {
+//        let key : String?
+//        let value : String?
+//        let keyArray : [String]?
+//        let valueArray : [String]?
+//        init(_ key : String, _ value : String, _ keyArray : [String], _ valueArray : [String]) {
+//            self.key = key
+//            self.value = value
+//            self.keyArray = keyArray
+//            self.valueArray = valueArray
+//        }
+//    }
+
+
+// Takes a searchpath of strings. The path can be empty
+// The item added needs a key and a value in order to work
+// Max index = 4
+//    func pushKeyValueItem(_ searchPath: [String], item: (key: String, value: String)){
+//        let myDatabase = Database.database().reference()
+//        switch searchPath.count {
+//        case 0: myDatabase.child(item.key).setValue(item.value)
+//        case 1: myDatabase.child(searchPath[0]).child(item.key).setValue(item.value)
+//        case 2: myDatabase.child(searchPath[0]).child(searchPath[1]).child(item.key).setValue(item.value)
+//        case 3: myDatabase.child(searchPath[0]).child(searchPath[1]).child(searchPath[2]).child(item.key).setValue(item.value)
+//        case 4: myDatabase.child(searchPath[0]).child(searchPath[1]).child(searchPath[2]).child(searchPath[3]).child(item.key).setValue(item.value)
+//        default: return
+//        }
+//    }
+
 
 //        //        let question1 = Question(title: "kakan går ofta till gymmet", correctAnswer: false)
 //        //        ce()
