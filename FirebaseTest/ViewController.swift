@@ -11,11 +11,17 @@ import Firebase
 
 class ViewController: UIViewController {
     @IBOutlet weak var firebaseLabel: UILabel!
-    @IBOutlet weak var firebaseBtn: UIButton!
+    @IBOutlet weak var firebaseTextfield: UITextField!
+    
+    @IBOutlet weak var keyTextfield: UITextField!
+    @IBOutlet weak var valueTextfield: UITextField!
+    
+    
+    @IBOutlet weak var addBranchBtn: UIButton!
+    @IBOutlet weak var pushItemBtn: UIButton!
     
     let userEmail : String = "Hek@gmail.com"
     let lobbyString : String = "Lobby"
-    let fb = FirebaseHelper()
     override func viewWillAppear(_ animated: Bool) {
         
 
@@ -25,7 +31,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         let path : [String] = ["ekkkk", "tre", "fem", "dad", "dokaodka", "odkaokda", "okdaokdoad", "odka"]
         let item : (key: String, value: String) = ("säkondKey", "Välju2")
-        fb.getStringWithPath(path)
+        //fb.getStringWithPath(path)
         //fb.pushKeyValueWithPath(searchPath: path, item: ((key: "ntjoohoo", value: "Hajjeell")))
     
         //fb.pushItem(path, item: item)
@@ -40,12 +46,21 @@ class ViewController: UIViewController {
 //        }
     }
     
-    @IBAction func firebaseBtnPressed(_ sender: Any) {
-        let a = fb.keyValuePair
-        firebaseLabel.text = a["Key"]
-        print(a)
-    }
+    var searchPathArray : [String] = []
     
+    @IBAction func addBranchBtnPressed(_ sender: Any) {
+        if let labelText = firebaseTextfield?.text! {
+            searchPathArray.append(labelText)
+            
+            var searchPath = ""
+            for element in searchPathArray {
+                searchPath.append("\(element)/")
+            }
+            firebaseLabel.text = searchPath
+            firebaseTextfield.text = ""
+        }
+    }
+    @IBOutlet weak var pushBtnPressed: UIButton!
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

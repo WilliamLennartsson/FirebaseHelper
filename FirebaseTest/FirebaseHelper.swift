@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-class FirebaseHelper {
+class FirebaseHelper : NSObject {
     
     var keyValuePair : [String : String] = ["Key":"", "Value":""]
     
