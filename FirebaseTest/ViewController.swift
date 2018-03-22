@@ -10,12 +10,31 @@ import UIKit
 import Firebase
 
 class ViewController: UIViewController {
-
+    @IBOutlet weak var firebaseLabel: UILabel!
+    
     let userEmail : String = "Hek@gmail.com"
     let lobbyString : String = "Lobby"
-    override func viewDidLoad() {
+    override func viewWillAppear(_ animated: Bool) {
         
+
+    }
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
+        let path : [String] = ["ekkkk", "tre", "fem", "dad", "dokaodka", "odkaokda", "okdaokdoad", "odka"]
+        let item : (key: String, value: String) = ("säkondKey", "Välju2")
+        let fb = FirebaseHelper()
+        fb.getStringWithPath(path)
+        //fb.pushKeyValueWithPath(searchPath: path, item: ((key: "ntjoohoo", value: "Hajjeell")))
+        
+        
+        
+        
+        
+        
+        
+        //fb.pushItem(path, item: item)
+        
         
         //let question2 = Question(title: "kakan går ofta till gymmet", correctAnswer: false)
         
@@ -25,34 +44,8 @@ class ViewController: UIViewController {
 //            print(user?.displayName)
 //        }
     }
+    
 
-    struct Question {
-        let title : String
-        let correctAnswer : Bool
-        init(title : String, correctAnswer : Bool) {
-            self.title = title
-            self.correctAnswer = correctAnswer
-        }
-        
-    }
-    
-    func loadQuestions(){
-        //Not done
-        let myDatabase = Database.database().reference()
-        let question : String = myDatabase.child("Questions").description()
-        
-        print(question)
-    }
-    
-    func pushQuestion (newQuestion: Question){
-//        let question1 = Question(title: "kakan går ofta till gymmet", correctAnswer: false)
-//        pushQuestion(newQuestion: question1)
-//        pushQuestion(newQuestion: Question(title: "Jean hatar pizza", correctAnswer: false))
-//        pushQuestion(newQuestion: Question(title: "Fem myror är fler än fyra elefanter", correctAnswer: true))
-        
-        let myDatabase = Database.database().reference()
-        myDatabase.child("Questions").child(newQuestion.title).setValue(newQuestion.correctAnswer)
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
