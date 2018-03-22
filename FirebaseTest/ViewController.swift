@@ -21,22 +21,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var pushItemBtn: UIButton!
     @IBOutlet weak var clearPathBtn: UIButton!
     
-    let userEmail : String = "Hek@gmail.com"
-    let lobbyString : String = "Lobby"
-    
     let fbHelper = FirebaseHelper()
     var searchPathArray : [String] = []
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-    
     
     @IBAction func addBranchBtnPressed(_ sender: Any) {
         if let labelText = firebaseTextfield?.text! {
